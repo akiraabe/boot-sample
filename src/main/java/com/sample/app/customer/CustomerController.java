@@ -59,7 +59,7 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/show/{id}", method = RequestMethod.GET)
-    public String getCustomer(@PathVariable String  id, Model model) {
+    public String show(@PathVariable String  id, Model model) {
 
         model.addAttribute("customer", customerService.getOne(id));
         return "customer/show";
