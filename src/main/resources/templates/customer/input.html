@@ -6,7 +6,7 @@
 </head>
 <body>
 <h2>Input Customer!</h2>
-<form th:action="@{/customer/create}" th:object="${customerCreationForm}"
+<form th:action="@{/customer/create}" th:object="${customerForm}"
       method="POST">
 
     <div th:if="${#fields.hasErrors('all')}" class="alert alert-danger">
@@ -14,11 +14,11 @@
     </div>
 
     <div class="form-group">
-        <label for="customerId">Id<span
-                th:if="${#fields.hasErrors('customerId')}" class="text-danger"
-                th:errors="*{customerId}">Error</span>
-        </label> <input type="text" class="form-control" id="customerId"
-                        name="customerId" th:field="*{customerId}" placeholder="CustomerId" />
+        <label for="id">Id<span
+                th:if="${#fields.hasErrors('id')}" class="text-danger"
+                th:errors="*{id}">Error</span>
+        </label> <input type="text" class="form-control" id="id"
+                        name="id" th:field="*{id}" placeholder="CustomerId" />
     </div>
 
     <div class="form-group">

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Contract</title>
+</head>
+<body>
+<h2>The List of Contract</h2>
+<div th:each="detail : ${contracts}">
+    <a th:href="@{'/contract/show/' + ${detail.id}}"><span th:text="${detail.id}"></span></a>
+    <span th:text="${detail.customer.id}">customer</span>
+    <span th:text="${detail.customer.name}">customer</span>
+    <span th:text="${detail.basicPlan.id}">Basic</span>
+    <span th:text="${detail.basicPlan.name}">Basic</span>
+    <span th:text="${detail.contractDate}">2017/03/19</span>
+</div>
+<div>
+    <a th:href="@{'/contract/input'}">New Contract</a>
+</div>
+</body>
+</html>

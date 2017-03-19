@@ -1,6 +1,6 @@
 package com.sample.domain.model;
 
-import com.sample.app.form.BasicPlanCreationForm;
+import com.sample.app.form.ContractForm;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -29,4 +29,15 @@ public class Contract {
 
     public Contract() {}
 
+    public Contract(ContractForm form, Customer customer, BasicPlan basicPlan) {
+        this.setId(null);
+        this.setContractDate(toDate(form.getContractDate()));
+        this.setCustomer(customer);
+        this.setBasicPlan(basicPlan);
+    }
+
+    private Date toDate(String strDate) {
+
+        return new Date();
+    }
 }

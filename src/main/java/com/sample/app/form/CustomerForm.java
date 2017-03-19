@@ -6,9 +6,9 @@ import lombok.Data;
  * Created by sarah on 2017/03/18.
  */
 @Data
-public class CustomerCreationForm {
+public class CustomerForm {
 
-    private String customerId;
+    private String id;
     private String name;
     private String address;
     private String phoneNumber;

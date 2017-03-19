@@ -6,7 +6,7 @@ import lombok.Data;
  * Created by sarah on 2017/03/18.
  */
 @Data
-public class BasicPlanCreationForm {
+public class BasicPlanForm {
 
     private String name;
     private String unitPrice;

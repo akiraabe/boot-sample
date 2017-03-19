@@ -1,6 +1,6 @@
 package com.sample.domain.model;
 
-import com.sample.app.form.CustomerCreationForm;
+import com.sample.app.form.CustomerForm;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -19,13 +19,13 @@ import javax.persistence.Table;
 public class Customer {
 
     @Id
-    private String customerId;
+    private String id;
     private String name;
     private String phoneNumber;
     private String address;
 
-    public Customer(CustomerCreationForm form) {
-        this.setCustomerId(form.getCustomerId());
+    public Customer(CustomerForm form) {
+        this.setId(form.getId());
         this.setName(form.getName());
         this.setAddress(form.getAddress());
         this.setPhoneNumber(form.getPhoneNumber());

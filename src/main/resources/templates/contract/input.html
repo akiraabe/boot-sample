@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Contract</title>
+</head>
+<body>
+<h2>Input Contract!</h2>
+<form th:action="@{/contract/create}" th:object="${contractForm}"
+      method="POST">
+
+    <div th:if="${#fields.hasErrors('all')}" class="alert alert-danger">
+        <p th:text="#{common.error}">ErrorMessage</p>
+    </div>
+
+    <div class="form-group">
+        <label for="customerId">Customer Id<span
+                th:if="${#fields.hasErrors('customerId')}" class="text-danger"
+                th:errors="*{customerId}">Error</span>
+        </label> <input type="text" class="form-control" id="customerId"
+                        name="customerId" th:field="*{customerId}" placeholder="CustomerId" />
+    </div>
+
+    <div class="form-group">
+        <label for="basicPlanId">Basic Plan Id<span
+                th:if="${#fields.hasErrors('basicPlanId')}" class="text-danger"
+                th:errors="*{basicPlanId}">Error</span>
+        </label> <input type="text" class="form-control" id="basicPlanId"
+                        name="basicPlanId" th:field="*{basicPlanId}" placeholder="BasicPlanId" />
+    </div>
+
+    <div class="form-group">
+        <label for="contractDate">ContractDate<span
+                th:if="${#fields.hasErrors('contractDate')}" class="text-danger"
+                th:errors="*{contractDate}">Error</span>
+        </label> <input type="text" class="form-control" id="contractDate"
+                        name="contractDate" th:field="*{contractDate}" placeholder="ContractDate" />
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn">Reset</button>
+    </div>
+</form>
+
+</body>
+</html>

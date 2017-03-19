@@ -1,8 +1,8 @@
-package com.sample.app.plan;
+package com.sample.app.controller;
 
-import com.sample.app.form.BasicPlanCreationForm;
-import com.sample.domain.model.BasicPlan;
-import com.sample.domain.service.BasicPlanService;
+import com.sample.app.form.CustomerForm;
+import com.sample.domain.model.Customer;
+import com.sample.domain.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,48 +20,48 @@ import java.util.List;
  * Created by sarah on 2017/03/18.
  */
 @Controller
-@RequestMapping("plan")
-public class BasicPlanController {
+@RequestMapping("customer")
+public class CustomerController {
 
     @Autowired
-    BasicPlanService basicPlanService;
+    CustomerService customerService;
 
     @ModelAttribute
-    BasicPlanCreationForm setUpForm() {
-        return new BasicPlanCreationForm();
+    CustomerForm setUpForm() {
+        return new CustomerForm()   ;
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    String list(Model model) {
+    String listCustomers(Model model) {
 
-        List<BasicPlan> basicPlans = basicPlanService.findAll();
-        if (basicPlans != null) basicPlans.forEach(System.out::println);
-        model.addAttribute("basicPlans", basicPlans);
-        return "plan/list";
+        List<Customer> customers = customerService.findAll();
+        if (customers != null) customers.forEach(System.out::println);
+        model.addAttribute("customers", customers);
+        return "customer/list";
     }
 
     @RequestMapping(value = "/input", method = RequestMethod.GET)
     public String input() {
-        return "plan/input";
+        return "customer/input";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    String create(@Validated BasicPlanCreationForm form, BindingResult result, Model mode, RedirectAttributes attributes) {
+    String create(@Validated CustomerForm form, BindingResult result, Model mode, RedirectAttributes attributes) {
 
         if (result.hasErrors()) {
-            return "plan/input";
+            return "customer/input";
         }
 
-        BasicPlan basicPlan = new BasicPlan(form);
-        basicPlanService.register(basicPlan);
+        Customer customer = new Customer(form);
+        customerService.register(customer);
 
         return "redirect:";
     }
 
     @RequestMapping(value = "/show/{id}", method = RequestMethod.GET)
-    public String show(@PathVariable Long  id, Model model) {
+    public String show(@PathVariable String  id, Model model) {
 
-        model.addAttribute("basicPlan", basicPlanService.getOne(id));
-        return "plan/show";
+        model.addAttribute("customer", customerService.getOne(id));
+        return "customer/show";
     }
 }

@@ -27,7 +27,7 @@ public class CustomerService {
 
     }
 
-    public Customer getOne(String customerId) {
-        return customerRepository.getOne(customerId);
+    public Customer getOne(String id) {
+        return customerRepository.getOne(id);
     }
 }

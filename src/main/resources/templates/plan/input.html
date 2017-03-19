@@ -6,7 +6,7 @@
 </head>
 <body>
 <h2>Input Plan!</h2>
-<form th:action="@{/plan/create}" th:object="${basicPlanCreationForm}"
+<form th:action="@{/plan/create}" th:object="${basicPlanForm}"
       method="POST">
 
     <div th:if="${#fields.hasErrors('all')}" class="alert alert-danger">

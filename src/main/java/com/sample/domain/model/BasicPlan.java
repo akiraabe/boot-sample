@@ -1,7 +1,6 @@
 package com.sample.domain.model;
 
-import com.sample.app.form.BasicPlanCreationForm;
-import com.sample.app.form.CustomerCreationForm;
+import com.sample.app.form.BasicPlanForm;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -24,7 +23,7 @@ public class BasicPlan {
 
     public BasicPlan() {}
 
-    public BasicPlan(BasicPlanCreationForm form) {
+    public BasicPlan(BasicPlanForm form) {
         this.setId(null);
         this.setName(form.getName());
         this.setUnitPrice(Long.valueOf(form.getUnitPrice()));

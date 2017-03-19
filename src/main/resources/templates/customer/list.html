@@ -7,7 +7,7 @@
 <body>
 <h2>The List of Customers</h2>
 <div th:each="detail : ${customers}">
-    <a th:href="@{'/customer/show/' + ${detail.customerId}}"><span th:text="${detail.customerId}"></span></a>
+    <a th:href="@{'/customer/show/' + ${detail.id}}"><span th:text="${detail.id}"></span></a>
     <span th:text="${detail.name}">Name</span>
     <span th:text="${detail.address}">Address</span>
     <span th:text="${detail.phoneNumber}">Phone Number</span>
