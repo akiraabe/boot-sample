@@ -30,5 +30,7 @@ public class Customer {
         this.setAddress(form.getAddress());
         this.setPhoneNumber(form.getPhoneNumber());
     }
-    public Customer() {}
+    public Customer() {
+        super();
+    }
 }
