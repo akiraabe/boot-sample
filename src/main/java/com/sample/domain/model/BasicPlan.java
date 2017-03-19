@@ -22,12 +22,6 @@ public class BasicPlan {
     private String name;
     private Long unitPrice;
 
-//    public BasicPlan(CustomerCreationForm form) {
-//        this.setCustomerId(form.getCustomerId());
-//        this.setName(form.getName());
-//        this.setAddress(form.getAddress());
-//        this.setPhoneNumber(form.getPhoneNumber());
-//    }
     public BasicPlan() {}
 
     public BasicPlan(BasicPlanCreationForm form) {
