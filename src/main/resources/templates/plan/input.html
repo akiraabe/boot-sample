@@ -1,39 +1,44 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="Layout">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>Plan</title>
 </head>
 <body>
-<h2>Input Plan!</h2>
-<form th:action="@{/plan/create}" th:object="${basicPlanForm}"
-      method="POST">
+<section layout:fragment="content">
+    <p>
+    <h2>Input Plan!</h2>
+    <form th:action="@{/plan/create}" th:object="${basicPlanForm}"
+          method="POST">
 
-    <div th:if="${#fields.hasErrors('all')}" class="alert alert-danger">
-        <p th:text="#{common.error}">ErrorMessage</p>
-    </div>
+        <div th:if="${#fields.hasErrors('all')}" class="alert alert-danger">
+            <p th:text="#{common.error}">ErrorMessage</p>
+        </div>
 
-    <div class="form-group">
-        <label for="name">Name<span
-                th:if="${#fields.hasErrors('name')}" class="text-danger"
-                th:errors="*{name}">Error</span>
-        </label> <input type="text" class="form-control" id="name"
-                        name="name" th:field="*{name}" placeholder="Name" />
-    </div>
+        <div class="form-group">
+            <label for="name">Name<span
+                    th:if="${#fields.hasErrors('name')}" class="text-danger"
+                    th:errors="*{name}">Error</span>
+            </label> <input type="text" class="form-control" id="name"
+                            name="name" th:field="*{name}" placeholder="Name"/>
+        </div>
 
-    <div class="form-group">
-        <label for="unitPrice">Unit price<span
-                th:if="${#fields.hasErrors('unitPrice')}" class="text-danger"
-                th:errors="*{unitPrice}">Error</span>
-        </label> <input type="text" class="form-control" id="unitPrice"
-                        name="unitPrice" th:field="*{unitPrice}" placeholder="Unit Price" />
-    </div>
+        <div class="form-group">
+            <label for="unitPrice">Unit price<span
+                    th:if="${#fields.hasErrors('unitPrice')}" class="text-danger"
+                    th:errors="*{unitPrice}">Error</span>
+            </label> <input type="text" class="form-control" id="unitPrice"
+                            name="unitPrice" th:field="*{unitPrice}" placeholder="Unit Price"/>
+        </div>
 
-    <div class="form-actions">
-        <button type="submit" class="btn btn-primary">Submit</button>
-        <button type="reset" class="btn">Reset</button>
-    </div>
-</form>
-
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn">Reset</button>
+        </div>
+    </form>
+    </p>
+</section>
 </body>
 </html>

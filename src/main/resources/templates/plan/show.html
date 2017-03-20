@@ -1,26 +1,32 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="Layout">
 <head>
     <meta charset="UTF-8"/>
     <title>Basic Plan domain</title>
 </head>
 <body>
-<h2>Show Plan!</h2>
-<div th:object="${basicPlan}">
-    <table border='0'>
-        <tr>
-            <td>Id :</td>
-            <td th:text="*{id}">1</td>
-        </tr>
-        <tr>
-            <td>Plan Name :</td>
-            <td th:text="*{name}">Test Customer</td>
-        </tr>
-        <tr>
-            <td>Unit Price :</td>
-            <td th:text="*{unitPrice}">10,000</td>
-        </tr>
-    </table>
-</div>
+<section layout:fragment="content">
+    <p>
+    <h2>Show Plan!</h2>
+    <div th:object="${basicPlan}">
+        <table border='0'>
+            <tr>
+                <td>Id :</td>
+                <td th:text="*{id}">1</td>
+            </tr>
+            <tr>
+                <td>Plan Name :</td>
+                <td th:text="*{name}">Test Customer</td>
+            </tr>
+            <tr>
+                <td>Unit Price :</td>
+                <td th:text="*{unitPrice}">10,000</td>
+            </tr>
+        </table>
+    </div>
+    </p>
+</section>
 </body>
 </html>

@@ -1,38 +1,44 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="Layout">
 <head>
-    <meta charset="UTF-8" />
-    <title>Contract domain</title> </head>
+    <meta charset="UTF-8"/>
+    <title>Contract domain</title></head>
 <body>
-<h2>Show Contract!</h2> <div th:object="${contract}">
-    <table border='0'>
-        <tr>
-            <td>Id :</td>
-            <td th:text="*{id}">1</td>
-        </tr>
-        <tr>
-            <td>Customer Id : </td>
-            <td th:text="*{customer.id}">0001</td>
-        </tr>
-        <tr>
-            <td>Customer Name : </td>
-            <td th:text="*{customer.name}">Name of customer</td>
-        </tr>
-        <tr>
-            <td>Plan Id : </td>
-            <td th:text="*{basicPlan.id}">Standard.</td>
-        </tr>
-        <tr>
-            <td>Plan Name : </td>
-            <td th:text="*{basicPlan.name}">Name of plan</td>
-        </tr>
-        <tr>
-            <td>Contract date : </td>
-            <td th:text="*{contractDate}">2017/03/19</td>
-        </tr>
-    </table>
+<section layout:fragment="content">
+    <p>
+    <h2>Show Contract!</h2>
+    <div th:object="${contract}">
+        <table border='0'>
+            <tr>
+                <td>Id :</td>
+                <td th:text="*{id}">1</td>
+            </tr>
+            <tr>
+                <td>Customer Id :</td>
+                <td th:text="*{customer.id}">0001</td>
+            </tr>
+            <tr>
+                <td>Customer Name :</td>
+                <td th:text="*{customer.name}">Name of customer</td>
+            </tr>
+            <tr>
+                <td>Plan Id :</td>
+                <td th:text="*{basicPlan.id}">Standard.</td>
+            </tr>
+            <tr>
+                <td>Plan Name :</td>
+                <td th:text="*{basicPlan.name}">Name of plan</td>
+            </tr>
+            <tr>
+                <td>Contract date :</td>
+                <td th:text="*{contractDate}">2017/03/19</td>
+            </tr>
+        </table>
 
-</div>
-
+    </div>
+    </p>
+</section>
 </body>
 </html>

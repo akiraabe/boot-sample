@@ -1,32 +1,38 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="Layout">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>Customer domain</title>
 </head>
 <body>
-<h2>Show Customer!</h2>
-<div th:object="${customer}">
-    <table border='0'>
-        <tr>
-            <td>Id :</td>
-            <td th:text="*{id}">1</td>
-        </tr>
-        <tr>
-            <td>CustomerName : </td>
-            <td th:text="*{name}">Test Customer</td>
-        </tr>
-        <tr>
-            <td>Address : </td>
-            <td th:text="*{address}">Test Address</td>
-        </tr>
-        <tr>
-            <td>Phone Number : </td>
-            <td th:text="*{phoneNumber}">Test Phone Number</td>
-        </tr>
-    </table>
+<section layout:fragment="content">
+    <p>
+    <h2>Show Customer!</h2>
+    <div th:object="${customer}">
+        <table border='0'>
+            <tr>
+                <td>Id :</td>
+                <td th:text="*{id}">1</td>
+            </tr>
+            <tr>
+                <td>CustomerName :</td>
+                <td th:text="*{name}">Test Customer</td>
+            </tr>
+            <tr>
+                <td>Address :</td>
+                <td th:text="*{address}">Test Address</td>
+            </tr>
+            <tr>
+                <td>Phone Number :</td>
+                <td th:text="*{phoneNumber}">Test Phone Number</td>
+            </tr>
+        </table>
 
-</div>
+    </div>
+    </p>
+</section>
 
 </body>
 </html>

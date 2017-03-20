@@ -1,18 +1,24 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="Layout">
 <head>
     <meta charset="UTF-8"/>
     <title>Basic Plan</title>
 </head>
 <body>
-<h2>The List of Basic Plans</h2>
-<div th:each="detail : ${basicPlans}">
-    <a th:href="@{'/plan/show/' + ${detail.id}}"><span th:text="${detail.id}"></span></a>
-    <span th:text="${detail.name}">Name</span>
-    <span th:text="${detail.unitPrice}">Address</span>
-</div>
-<div>
-    <a th:href="@{'/plan/input'}">New Plan</a>
-</div>
+<section layout:fragment="content">
+    <p>
+    <h2>The List of Basic Plans</h2>
+    <div th:each="detail : ${basicPlans}">
+        <a th:href="@{'/plan/show/' + ${detail.id}}"><span th:text="${detail.id}"></span></a>
+        <span th:text="${detail.name}">Name</span>
+        <span th:text="${detail.unitPrice}">Address</span>
+    </div>
+    <div>
+        <a th:href="@{'/plan/input'}">New Plan</a>
+    </div>
+    </p>
+</section>
 </body>
 </html>
