@@ -29,6 +29,9 @@ public class Use {
     @Temporal(value=TemporalType.DATE)
     private Date useDate;
     private Integer electricEnergy; //kWh(Kilo Watt Hour)
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
     public Use() {
     }
@@ -37,6 +40,7 @@ public class Use {
         this.setId(null);
         this.setUseDate(toDate(form.getUseDate()));
         this.setElectricEnergy(Integer.valueOf(form.getElectricEnergy()));
+        this.setCustomer(form.getCustomer());
     }
 
     private Date toDate(String strDate) {

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="Layout">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Use Electric Energy</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <p>
+    <h2>The List of Usage Electric Energy</h2>
+    <div th:each="detail : ${uses}">
+        <a th:href="@{'/plan/show/' + ${detail.id}}"><span th:text="${detail.id}"></span></a>
+        <span th:text="${detail.useDate}">2017/01/01</span>
+        <span th:text="${detail.electricEnergy}">100</span>
+        <span th:text="${detail.customer.id}">0001</span>
+        <span th:text="${detail.customer.name}">Customer Name</span>
+    </div>
+    <div>
+        <a th:href="@{'/use/input'}">New Use</a>
+    </div>
+    </p>
+</section>
+</body>
+</html>

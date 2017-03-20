@@ -7,3 +7,12 @@ insert into customer (id, name, address, phone_number) values('0003','Jeff Porca
 insert into basic_plan (name, unit_price) values('Standard', 5000);
 insert into basic_plan (name, unit_price) values('Lite', 3800);
 insert into basic_plan (name, unit_price) values('Premium', 7500);
+
+-- Contract
+insert into contract (contract_date, customer_id, basic_plan_id) values('2017-03-19', '0001', 1);
+
+-- Use
+insert into use (use_date, electric_energy, customer_id) values('2017-03-20', 200, '0001');
+insert into use (use_date, electric_energy, customer_id) values('2017-03-21', 210, '0001');
+insert into use (use_date, electric_energy, customer_id) values('2017-03-22', 220, '0001');
+insert into use (use_date, electric_energy, customer_id) values('2017-03-23', 230, '0001');
