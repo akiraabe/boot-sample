@@ -14,8 +14,9 @@
         <a th:href="@{'/plan/show/' + ${detail.id}}"><span th:text="${detail.id}"></span></a>
         <span th:text="${detail.useDate}">2017/01/01</span>
         <span th:text="${detail.electricEnergy}">100</span>
-        <span th:text="${detail.customer.id}">0001</span>
-        <span th:text="${detail.customer.name}">Customer Name</span>
+        <span th:text="${detail.contract.id}">1</span>
+        <span th:text="${detail.contract.customer.id}">0001 Name</span>
+        <span th:text="${detail.contract.customer.name}">Customer Name</span>
     </div>
     <div>
         <a th:href="@{'/useDetail/input'}">New Use</a>

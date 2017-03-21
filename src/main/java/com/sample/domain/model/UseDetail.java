@@ -29,10 +29,9 @@ public class UseDetail {
     private Date useDate;
     private Integer electricEnergy; //kWh(Kilo Watt Hour)
 
-    //FIXME: Fix relationship correct is relate with the Contract.
     @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
+    @JoinColumn(name = "contract_id")
+    private Contract contract;
 
     public UseDetail() {
     }
@@ -41,7 +40,7 @@ public class UseDetail {
         this.setId(null);
         this.setUseDate(toDate(form.getUseDate()));
         this.setElectricEnergy(Integer.valueOf(form.getElectricEnergy()));
-        this.setCustomer(form.getCustomer());
+        this.setContract(form.getContract());
     }
 
     private Date toDate(String strDate) {

@@ -1,8 +1,10 @@
 package com.sample.app.controller;
 
 import com.sample.app.form.UseDetailForm;
+import com.sample.domain.model.Contract;
 import com.sample.domain.model.Customer;
 import com.sample.domain.model.UseDetail;
+import com.sample.domain.service.ContractService;
 import com.sample.domain.service.CustomerService;
 import com.sample.domain.service.UseDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +31,7 @@ public class UseDetailController {
     UseDetailService useDetailService;
 
     @Autowired
-    CustomerService customerService;
+    ContractService contractService;
 
     @ModelAttribute
     UseDetailForm setUpForm() {
@@ -58,8 +60,8 @@ public class UseDetailController {
         }
 
         // retrieve relation entities.
-        Customer customer = customerService.getOne(form.getCustomerId());
-        form.setCustomer(customer);
+        Contract contract = contractService.getOne(form.getContractId());
+        form.setContract(contract);
 
         UseDetail useDetail = new UseDetail(form);
         useDetailService.register(useDetail);

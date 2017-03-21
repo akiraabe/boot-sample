@@ -12,7 +12,7 @@ insert into basic_plan (name, unit_price) values('Premium', 7500);
 insert into contract (contract_date, customer_id, basic_plan_id) values('2017-03-19', '0001', 1);
 
 -- Use
-insert into use_detail (use_date, electric_energy, customer_id) values('2017-03-20', 200, '0001');
-insert into use_detail (use_date, electric_energy, customer_id) values('2017-03-21', 210, '0001');
-insert into use_detail (use_date, electric_energy, customer_id) values('2017-03-22', 220, '0001');
-insert into use_detail (use_date, electric_energy, customer_id) values('2017-03-23', 230, '0001');
+insert into use_detail (use_date, electric_energy, contract_id) values('2017-03-20', 200, 1);
+insert into use_detail (use_date, electric_energy, contract_id) values('2017-03-21', 210, 1);
+insert into use_detail (use_date, electric_energy, contract_id) values('2017-03-22', 220, 1);
+insert into use_detail (use_date, electric_energy, contract_id) values('2017-03-23', 230, 1);

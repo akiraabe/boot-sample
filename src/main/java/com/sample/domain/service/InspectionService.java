@@ -51,7 +51,7 @@ public class InspectionService {
         form.setContract(contract);
 
         Inspection inspection = new Inspection(form);
-        List<UseDetail> useDetails = useDetailService.findAll();
+        List<UseDetail> useDetails = useDetailService.findByContractIdAndDate(form);
         inspection.setUseDetailList(useDetails);
         this.register(inspection);
     }

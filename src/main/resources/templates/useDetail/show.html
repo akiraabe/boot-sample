@@ -25,8 +25,16 @@
                 <td th:text="*{electricEnergy}">700</td>
             </tr>
             <tr>
+                <td>Contract Id :</td>
+                <td th:text="*{contract.id}">1</td>
+            </tr>
+            <tr>
+                <td>Customer Id :</td>
+                <td th:text="*{contract.customer.id}">0001</td>
+            </tr>
+            <tr>
                 <td>Customer Name :</td>
-                <td th:text="*{customer.name}">Test Customer</td>
+                <td th:text="*{contract.customer.name}">Test Customer</td>
             </tr>
         </table>
     </div>
