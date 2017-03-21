@@ -9,7 +9,7 @@ import java.util.Date;
  * Created by abe.akira on 2017/03/20.
  */
 @Data
-public class UseForm {
+public class UseDetailForm {
     private String useDate;
     private String electricEnergy;
     private String customerId;

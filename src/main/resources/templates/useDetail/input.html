@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="Layout">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Use</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <p>
+    <h2>Input Use!</h2>
+    <form th:action="@{/useDetail/create}" th:object="${useDetailForm}"
+          method="POST">
+
+        <div th:if="${#fields.hasErrors('all')}" class="alert alert-danger">
+            <p th:text="#{common.error}">ErrorMessage</p>
+        </div>
+
+        <div class="form-group">
+            <label for="useDate">Use Date<span
+                    th:if="${#fields.hasErrors('useDate')}" class="text-danger"
+                    th:errors="*{useDate}">Error</span>
+            </label> <input type="text" class="form-control" id="useDate"
+                            name="useDate" th:field="*{useDate}" placeholder="Use Date"/>
+        </div>
+
+        <div class="form-group">
+            <label for="electricEnergy">ElectricEnergy<span
+                    th:if="${#fields.hasErrors('electricEnergy')}" class="text-danger"
+                    th:errors="*{electricEnergy}">Error</span>
+            </label> <input type="text" class="form-control" id="electricEnergy"
+                            name="electricEnergy" th:field="*{electricEnergy}" placeholder="Electric Energy"/>
+        </div>
+
+        <div class="form-group">
+            <label for="customerId">Customer Id<span
+                    th:if="${#fields.hasErrors('electricEnergy')}" class="text-danger"
+                    th:errors="*{customerId}">Error</span>
+            </label> <input type="text" class="form-control" id="customerId"
+                            name="customerId" th:field="*{customerId}" placeholder="Customer Id"/>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn">Reset</button>
+        </div>
+    </form>
+    </p>
+</section>
+</body>
+</html>

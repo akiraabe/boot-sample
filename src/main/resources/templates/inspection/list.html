@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="Layout">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Inspection</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <p>
+    <h2>The List of Inspection</h2>
+    <div th:each="detail : ${inspections}">
+        <a th:href="@{'/inspection/show/' + ${detail.id}}"><span th:text="${detail.id}"></span></a>
+        <span th:text="${detail.contract.id}">customer</span>
+        <span th:text="${detail.contract.customer.id}">customer</span>
+        <span th:text="${detail.contract.customer.name}">customer</span>
+        <span th:text="${detail.inspectionDate}">2017/03/19</span>
+        <span th:text="${detail.useAmount}">1234</span>
+    </div>
+    <div>
+        <a th:href="@{'/inspection/input'}">New Inspection</a>
+    </div>
+    </p>
+</section>
+</body>
+</html>

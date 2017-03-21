@@ -1,7 +1,7 @@
 package com.sample.domain.model;
 
 import com.sample.app.form.ContractForm;
-import com.sample.app.form.UseForm;
+import com.sample.app.form.InspectionForm;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -11,37 +11,44 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAccessor;
 import java.util.Date;
+import java.util.List;
 
 /**
- * Domain model object of Use.
+ * Domain model object of Inspection.
  * <p>
- * Created by abe.akira on 2017/03/20.
+ * Created by abe.akira on 2017/03/21.
  */
 
 @Data
 @Entity
-@Table(name = "use")
-public class Use {
+@Table(name = "inspection")
+public class Inspection {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Temporal(value=TemporalType.DATE)
-    private Date useDate;
-    private Integer electricEnergy; //kWh(Kilo Watt Hour)
+    private Date inspectionDate;
     @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
+    @JoinColumn(name = "contract_id")
+    private Contract contract;
+    @OneToMany
+    private List<UseDetail> useDetailList;
 
-    public Use() {
+    public Inspection() {
     }
 
-    public Use(UseForm form) {
+    public Inspection(InspectionForm form) {
         this.setId(null);
-        this.setUseDate(toDate(form.getUseDate()));
-        this.setElectricEnergy(Integer.valueOf(form.getElectricEnergy()));
-        this.setCustomer(form.getCustomer());
+        this.setInspectionDate(toDate(form.getInspectionDate()));
+        this.setContract(form.getContract());
     }
+
+    public Integer getUseAmount() {
+        return useDetailList.stream().mapToInt(o -> o.getElectricEnergy()).sum();
+    }
+
+
 
     private Date toDate(String strDate) {
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy/MM/dd");

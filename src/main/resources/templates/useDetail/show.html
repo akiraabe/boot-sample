@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="Layout">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Use domain</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <p>
+    <h2>Show Usage!</h2>
+    <div th:object="${useDetail}">
+        <table border='0'>
+            <tr>
+                <td>Id :</td>
+                <td th:text="*{id}">1</td>
+            </tr>
+            <tr>
+                <td>Use Date :</td>
+                <td th:text="*{useDate}">2017/03/01</td>
+            </tr>
+            <tr>
+                <td>Electric Energy :</td>
+                <td th:text="*{electricEnergy}">700</td>
+            </tr>
+            <tr>
+                <td>Customer Name :</td>
+                <td th:text="*{customer.name}">Test Customer</td>
+            </tr>
+        </table>
+    </div>
+    </p>
+</section>
+</body>
+</html>
