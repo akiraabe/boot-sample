@@ -1,15 +1,10 @@
 package com.sample.domain.model;
 
-import com.sample.app.form.ContractForm;
 import com.sample.app.form.InspectionForm;
+import com.sample.util.CalendarUtil;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAccessor;
 import java.util.Date;
 import java.util.List;
 
@@ -27,7 +22,7 @@ public class Inspection {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Temporal(value=TemporalType.DATE)
+    @Temporal(value = TemporalType.DATE)
     private Date inspectionDate;
     @ManyToOne
     @JoinColumn(name = "contract_id")
@@ -40,7 +35,7 @@ public class Inspection {
 
     public Inspection(InspectionForm form) {
         this.setId(null);
-        this.setInspectionDate(toDate(form.getInspectionDate()));
+        this.setInspectionDate(CalendarUtil.toDate(form.getInspectionDate()));
         this.setContract(form.getContract());
     }
 
@@ -48,12 +43,4 @@ public class Inspection {
         return useDetailList.stream().mapToInt(o -> o.getElectricEnergy()).sum();
     }
 
-
-
-    private Date toDate(String strDate) {
-        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        TemporalAccessor ta = fmt.parse(strDate);
-        ZonedDateTime zdt = LocalDate.from(ta).atTime(0, 0).atZone(ZoneId.of("Asia/Tokyo"));
-        return Date.from(zdt.toInstant());
-    }
 }

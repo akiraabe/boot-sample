@@ -23,6 +23,7 @@ public class CustomerTest {
         assertThat(akira.getName(), is ("Akira Abe"));
         assertThat(akira.getPhoneNumber(), is ("0000-1111-2222"));
         assertThat(akira.getAddress(), is ("Chiba, Japan"));
+
     }
 
 }

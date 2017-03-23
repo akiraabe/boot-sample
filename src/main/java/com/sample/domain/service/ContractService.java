@@ -1,9 +1,7 @@
 package com.sample.domain.service;
 
 import com.sample.domain.model.Contract;
-import com.sample.domain.model.Customer;
 import com.sample.domain.repository.ContractRepository;
-import com.sample.domain.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

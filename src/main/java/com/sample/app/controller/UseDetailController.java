@@ -2,10 +2,8 @@ package com.sample.app.controller;
 
 import com.sample.app.form.UseDetailForm;
 import com.sample.domain.model.Contract;
-import com.sample.domain.model.Customer;
 import com.sample.domain.model.UseDetail;
 import com.sample.domain.service.ContractService;
-import com.sample.domain.service.CustomerService;
 import com.sample.domain.service.UseDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -1,8 +1,13 @@
 package com.sample.app.controller;
 
+import com.sample.app.form.BillForm;
 import com.sample.app.form.CustomerForm;
+import com.sample.domain.model.Bill;
 import com.sample.domain.model.Customer;
+import com.sample.domain.model.Inspection;
+import com.sample.domain.service.BillService;
 import com.sample.domain.service.CustomerService;
+import com.sample.domain.service.InspectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,51 +22,60 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 
 /**
- * Created by sarah on 2017/03/18.
+ * Created by abe.akira on 2017/03/23.
  */
 @Controller
-@RequestMapping("customer")
-public class CustomerController {
+@RequestMapping("bill")
+public class BillController {
+
+    @Autowired
+    BillService billService;
 
     @Autowired
     CustomerService customerService;
 
+    @Autowired
+    InspectionService inspectionService;
+
     @ModelAttribute
-    CustomerForm setUpForm() {
-        return new CustomerForm()   ;
+    BillForm setUpForm() {
+        return new BillForm()   ;
     }
 
     @RequestMapping(method = RequestMethod.GET)
     String list(Model model) {
 
-        List<Customer> customers = customerService.findAll();
-        if (customers != null) customers.forEach(System.out::println);
-        model.addAttribute("customers", customers);
-        return "customer/list";
+        List<Bill> bills = billService.findAll();
+        if (bills != null) bills.forEach(System.out::println);
+        model.addAttribute("bills", bills);
+        return "bill/list";
     }
 
     @RequestMapping(value = "/input", method = RequestMethod.GET)
     public String input() {
-        return "customer/input";
+        return "bill/input";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    String create(@Validated CustomerForm form, BindingResult result, Model mode, RedirectAttributes attributes) {
+    String create(@Validated BillForm form, BindingResult result, Model mode, RedirectAttributes attributes) {
 
         if (result.hasErrors()) {
-            return "customer/input";
+            return "bill/input";
         }
 
-        Customer customer = new Customer(form);
-        customerService.register(customer);
+        // retrieve relation entities.
+        Inspection inspection = inspectionService.getOne(Long.valueOf(form.getInspectionId()));
+        Bill bill = new Bill(form);
+        bill.setInspection(inspection);
+        billService.register(bill);
 
         return "redirect:";
     }
 
     @RequestMapping(value = "/show/{id}", method = RequestMethod.GET)
-    public String show(@PathVariable String  id, Model model) {
+    public String show(@PathVariable Long id, Model model) {
 
-        model.addAttribute("customer", customerService.getOne(id));
-        return "customer/show";
+        model.addAttribute("bill", billService.getOne(id));
+        return "bill/show";
     }
 }

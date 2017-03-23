@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="Layout">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Bill domain</title></head>
+<body>
+<section layout:fragment="content">
+    <p>
+    <h2>Show Bill!</h2>
+    <div th:object="${inspection}">
+        <table border='0'>
+            <tr>
+                <td>Id :</td>
+                <td th:text="*{id}">1</td>
+            </tr>
+            <tr>
+                <td>Inspection Id :</td>
+                <td th:text="*{inspection.id}">1</td>
+            </tr>
+            <tr>
+                <td>Customer Id :</td>
+                <td th:text="*{inspection.contract.customer.id}">0001</td>
+            </tr>
+            <tr>
+                <td>Customer Name :</td>
+                <td th:text="*{inspection.contract.customer.name}">Name of customer</td>
+            </tr>
+            <tr>
+                <td>Bill generated date :</td>
+                <td th:text="*{billGeneratedDate}">2017/03/19</td>
+            </tr>
+            <tr>
+                <td>Bill due date :</td>
+                <td th:text="*{billDueDate}">2017/03/19</td>
+            </tr>
+            <tr>
+                <td>Bill Amount :</td>
+                <td th:text="*{billAmount}">123456</td>
+            </tr>
+        </table>
+
+    </div>
+    </p>
+</section>
+</body>
+</html>

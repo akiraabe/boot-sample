@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="Layout">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Bill</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <p>
+    <h2>Input Bill!</h2>
+    <form th:action="@{/bill/create}" th:object="${billForm}"
+          method="POST">
+
+        <div th:if="${#fields.hasErrors('all')}" class="alert alert-danger">
+            <p th:text="#{common.error}">ErrorMessage</p>
+        </div>
+
+        <div class="form-group">
+            <label for="inspectionId">Contract Id<span
+                    th:if="${#fields.hasErrors('inspectionId')}" class="text-danger"
+                    th:errors="*{inspectionId}">Error</span>
+            </label> <input type="text" class="form-control" id="inspectionId"
+                            name="inspectionId" th:field="*{inspectionId}" placeholder="InspectionId"/>
+        </div>
+
+        <div class="form-group">
+            <label for="billGeneratedDate">Bill Created Date<span
+                    th:if="${#fields.hasErrors('billGeneratedDate')}" class="text-danger"
+                    th:errors="*{billGeneratedDate}">Error</span>
+            </label> <input type="text" class="form-control" id="billGeneratedDate"
+                            name="billGeneratedDate" th:field="*{billGeneratedDate}" placeholder="BillGeneratedDate"/>
+        </div>
+
+        <div class="form-group">
+            <label for="billDueDate">Bill Due Date<span
+                    th:if="${#fields.hasErrors('billDueDate')}" class="text-danger"
+                    th:errors="*{billDueDate}">Error</span>
+            </label> <input type="text" class="form-control" id="billDueDate"
+                            name="billDueDate" th:field="*{billDueDate}" placeholder="BillDueDate"/>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn">Reset</button>
+        </div>
+    </form>
+    </p>
+</section>
+</body>
+</html>

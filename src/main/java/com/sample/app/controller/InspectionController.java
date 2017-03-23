@@ -1,6 +1,5 @@
 package com.sample.app.controller;
 
-import com.sample.app.form.ContractForm;
 import com.sample.app.form.InspectionForm;
 import com.sample.domain.model.*;
 import com.sample.domain.service.*;
