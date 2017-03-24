@@ -11,7 +11,7 @@
     <p>
     <h2>The List of Usage Electric Energy</h2>
     <div th:each="detail : ${useDetails}">
-        <a th:href="@{'/plan/show/' + ${detail.id}}"><span th:text="${detail.id}"></span></a>
+        <a th:href="@{'/useDetail/show/' + ${detail.id}}"><span th:text="${detail.id}"></span></a>
         <span th:text="${detail.useDate}">2017/01/01</span>
         <span th:text="${detail.electricEnergy}">100</span>
         <span th:text="${detail.contract.id}">1</span>
